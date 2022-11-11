@@ -1,11 +1,12 @@
-import React from 'react'
-import {render, cleanup} from '@testing-library/react'
-import App from './App'
+import React from 'react';
+import Enzyme, {shallow} from "enzyme";
+import { EnzymeAdapter } from 'enzyme';
+import App from './App';
 
- afterEach(cleanup)
+ Enzyme.configure({adapter: new EnzymeAdapter});
+
+ test('render app without breaking', () => {
+   
+ });
+
  
- it('should render to home page of', () => {
-    const { asFragment } = render(<App />)
-    
-    expect(asFragment(<App />)).toMatchSnapshot()
-   });
