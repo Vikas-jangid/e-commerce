@@ -9,6 +9,7 @@ import NotFound from "./components/notFound";
 import Login from "./components/login";
 import Register from "./components/register";
 import Cart from "./components/cart";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate replace to="/404" />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>  
     
   );
