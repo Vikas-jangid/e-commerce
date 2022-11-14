@@ -1,11 +1,13 @@
 import React from "react";
 import Carousel from "./carousel";
 import sideBanner from "../assests/images/sideBanner.png"
+import Search from "./search";
 
 function Home() {
     return(
      <div className="page">
-        <h1 className="text-center p-4 font-bold text-3xl font-mono">YOUR OWN SPORTS STORE</h1>
+        <Search />
+
         <Carousel/>
         <div className="grid grid-cols-3 gap-4">
         <div class="col-span-2 ...">
