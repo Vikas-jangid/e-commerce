@@ -10,12 +10,6 @@ import Login from "./components/login";
 import Register from "./components/register";
 import Cart from "./components/cart";
 
-export const LocationDisplay = () => {
-  const location = useLocation()
-
-  return <div data-testid="location-display">{location.pathname}</div>
-}
-
 function App() {
   return (
       <Router>
