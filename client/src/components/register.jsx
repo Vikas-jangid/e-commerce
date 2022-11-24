@@ -11,17 +11,17 @@ function Signup() {
     const [mobile_number, setMobileNumber] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [confirm_password, setConfirmPassword] = useState();
 
 
     const handleSubmit = () => {
-        // console.log(email, "email");
-        // console.log(password, "password");
+        console.log(first_name, last_name, user_name, mobile_number, email, password, confirm_password, "user data");
 
     }
 
     return (
         <>
-            <section className="h-screen">
+            <section className="my-5">
                 <div className="px-6 h-full text-gray-800">
                     <div
                     className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
@@ -62,7 +62,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="first_name"
                             placeholder="First Name"
-                            // onChange={e => setEmail(e.target.value)}
+                            onChange={e => setFirstName(e.target.value)}
                             />
                         </div>
                         <div className="mb-6">
@@ -72,6 +72,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="last_name"
                             placeholder="Last Name"
+                            onChange={e => setLastName(e.target.value)}
                             />
                         </div>
                         <div className="mb-6">
@@ -81,6 +82,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="email"
                             placeholder="Email address"
+                            onChange={e => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-6">
@@ -90,6 +92,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="user_name"
                             placeholder="User Name"
+                            onChange={e => setUserName(e.target.value)}
                             />
                         </div>
                         <div className="mb-6">
@@ -99,6 +102,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="mobile_number"
                             placeholder="Mobile Number"
+                            onChange={e => setMobileNumber(e.target.value)}
                             />
                         </div>
                         <div className="mb-6">
@@ -108,7 +112,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="password"
                             placeholder="Password"
-                            // onChange={e => setPassword(e.target.value)}
+                            onChange={e => setPassword(e.target.value)}
                             />
                         </div>
                         <div className="mb-6">
@@ -118,7 +122,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="confirm_password"
                             placeholder="Confirm Password"
-                            // onChange={e => setPassword(e.target.value)}
+                            onChange={e => setConfirmPassword(e.target.value)}
                             />
                         </div>
 
