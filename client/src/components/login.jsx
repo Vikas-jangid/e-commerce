@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useState} from "react";
 import loginImage from "../assests/images/login.webp";
+import googleIcon from "../assests/images/google-icon.svg";
 
 
 function Login() {
@@ -36,18 +37,9 @@ function Login() {
                             <p className="text-lg mb-0 mr-4">LOGIN</p>
                             <button
                             type="button"
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            className="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
+                            className="inline-block p-3 mx-3 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md"
                             >
-                            {/* <!-- Facebook --> */}
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="w-4 h-4">
-                                {/* <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
-                                <path
-                                fill="currentColor"
-                                d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
-                                />
-                            </svg>
+                              <img src={googleIcon}  alt="googleIcon" viewBox="0 0 320 512" className="w-4 h-4"/>
                             </button>
                         </div>
 
@@ -105,7 +97,7 @@ function Login() {
                             <p className="text-sm font-semibold mt-2 pt-1 mb-0">
                             Don't have an account?
                             <a
-                                href="#!"
+                                href="/register"
                                 className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
                                 >Register</a
                             >
