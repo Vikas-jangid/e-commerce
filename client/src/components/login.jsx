@@ -1,19 +1,37 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useState} from "react";
 import loginImage from "../assests/images/login.webp";
-import googleIcon from "../assests/images/google-icon.svg";
-
+import GoogleLogin from "react-google-login";
+import { useNavigate as navigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
+    const [status, setStatusBase] = useState();
 
     const handleSubmit = () => {
         console.log(email, "email");
         console.log(password, "password");
 
     }
+
+        const handleSocialLogin = (token)=>{
+            console.log(token,"google acc info")
+            axios.post("http://localhost:9002/social-login", {
+                    token:token
+                  })
+                  .then((res)=>{
+                    localStorage.setItem("user", JSON.stringify(res.data.jti));
+                    console.log(res.data)
+                    navigate("/home");
+                    window.location.reload();
+                    return res.data;
+                  })
+                  .catch(error => {
+                    setStatusBase({ msg: "Login Failed", key: Math.random() });
+                  })
+            }
 
     return (
         <>
@@ -35,12 +53,17 @@ function Login() {
                         <form>
                         <div className="flex flex-row items-center justify-center lg:justify-start">
                             <p className="text-lg mb-0 mr-4">LOGIN</p>
-                            <button
-                            type="button"
-                            className="inline-block p-3 mx-3 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md"
-                            >
-                              <img src={googleIcon}  alt="googleIcon" viewBox="0 0 320 512" className="w-4 h-4"/>
-                            </button>
+                            <GoogleLogin
+                                clientId="36374029359-vgceut39avc3v16p44cnn9tsri92oh5p.apps.googleusercontent.com"
+                                buttonText={('login')}
+                                onSuccess={(res)=>{console.log(res);
+                                    handleSocialLogin(res.tokenId)
+
+                                navigate("/home")
+                                }}
+                                onFailure={(res)=>console.log(res,"res")}
+                                cookiePolicy={'single_host_origin'}
+                            />
                         </div>
 
                         <div
