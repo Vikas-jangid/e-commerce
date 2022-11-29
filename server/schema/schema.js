@@ -67,31 +67,6 @@ const Mutation = new GraphQLObjectType({
             return user.save();
          }
       }
-    //   addBook: {
-    //      type: BookType,
-    //      args: {
-    //         name: {type: new GraphQLNonNull(GraphQLString)},
-    //         genre: {type: new GraphQLNonNull(GraphQLString)},
-    //         author:{type: new GraphQLNonNull(GraphQLString)}
-    //      },
-    //      resolve(parent, args) {
-    //         let book = new Book({
-    //            name: args.name,
-    //            genre: args.genre,
-    //            author:args.author
-    //         });
-    //         return book.save();
-    //      }
-    //   },
-    //   deleteBook: {
-    //      type: BookType,
-    //      args: {
-    //        id: { type: new GraphQLNonNull(GraphQLID)}
-    //      },
-    //      resolve(parent, args) {
-    //        return Book.findByIdAndDelete(args.id);
-    //      }
-    //   }
    }
 })
 
