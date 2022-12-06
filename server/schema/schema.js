@@ -1,5 +1,7 @@
 import {graphql} from "graphql";
 import User from "../models/users.js"
+import * as bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 import {
    GraphQLObjectType,
@@ -32,17 +34,22 @@ const RootQuery = new GraphQLObjectType({
          type:UserType,
          args:{id:{type:GraphQLID}},
          resolve(parent, args){
-            //Code here to get the data from database or any other source  
-            // return _.find(books,{id:args.id})
-            // return Book.findById(args.id);
+            
          }
       },
    }
 }); 
+const tokenSecret="2r5u7x!AjWnZr4u7QeThWmZ";
+
+const generateToken = (user) => {
+   return jwt.sign({data:user}, tokenSecret, {expiresIn: '24h'})
+}
+
+let token = "";
 
 const Mutation = new GraphQLObjectType({
    name:"Mutation",
-   fields:{
+   fields:{ 
       addUser:{
          type: UserType,
          args:{
@@ -54,17 +61,51 @@ const Mutation = new GraphQLObjectType({
             password: {type: new GraphQLNonNull(GraphQLString)},
             confirm_password: {type: new GraphQLNonNull(GraphQLString)},
          },
-         resolve(parent, args) {
+         async resolve(parent, args) {
             let user = new User({
                 first_name: args.first_name,
                 last_name: args.last_name,
                 email: args.email,
                 user_name: args.user_name,
                 mobile_number: args.mobile_number,
-                password: args.password,
-                confirm_password: args.confirm_password,
+                password: await bcrypt.hash(args.password, 10),
+                confirm_password: await bcrypt.hash(args.confirm_password, 10),
                });
             return user.save();
+         }
+      },
+      loginUser:{
+         type:UserType,
+         args:{
+            email : {type: new GraphQLNonNull(GraphQLString)},
+            password: {type: new GraphQLNonNull(GraphQLString)},
+         },
+         async resolve(parent, args) {
+            let email = args.email;
+            let password = args.password;
+            const user = await User.findOne({ email })
+               if (!user) {
+                  Error('No user found ')
+               }
+               else if(user){
+                  bcrypt.compare(password, user.password, (error, match) => {
+                     if (error) {
+                        throw new Error();
+                     }
+                     else if(match){
+                        token = generateToken(user);
+                     }
+                     else{
+                        throw new Error();
+                     }
+                  })
+               }
+               var AuthenticatedUser ={
+                  name:user.first_name + " " + user.last_name,
+                  auth: true,
+                  token : generateToken(user)
+               }
+               return AuthenticatedUser;
          }
       }
    }
