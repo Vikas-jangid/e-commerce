@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import loginImage from "../assests/images/login.webp";
 import GoogleLogin from "react-google-login";
 import { useNavigate as navigate } from "react-router-dom";
-import axios from "axios";
 
 function Login() {
     const [email, setEmail] = useState();
@@ -30,9 +29,9 @@ function Login() {
                         className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
                     >
                         <img
-                        src={loginImage}
-                        className="w-full"
-                        alt="Sample image"
+                            src={loginImage}
+                            className="w-full"
+                            alt="Sample image"
                         />
                     </div>
                     <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
