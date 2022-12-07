@@ -2,6 +2,7 @@ import {graphql} from "graphql";
 import User from "../models/users.js"
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import jwt_decode from "jwt-decode";
 
 import {
    GraphQLObjectType,
@@ -107,7 +108,18 @@ const Mutation = new GraphQLObjectType({
                }
                return AuthenticatedUser;
          }
-      }
+      },
+      googleLogin:{
+         type:UserType,
+         args:{
+            token: {type: new GraphQLNonNull(GraphQLString)},
+         },
+         async resolve(parent, args) {
+            const {token} = args.token
+            var decode = jwt_decode(token);
+            console.log(decode.token)
+         }
+      },
    }
 })
 

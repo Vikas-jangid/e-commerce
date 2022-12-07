@@ -58,11 +58,11 @@ function Login() {
                                 buttonText={('login')}
                                 onSuccess={(res)=>{console.log(res);
                                     handleSocialLogin(res.tokenId)
-
-                                navigate("/home")
+                                    navigate("/home")
                                 }}
                                 onFailure={(res)=>console.log(res,"res")}
                                 cookiePolicy={'single_host_origin'}
+                                isSignedIn={true}
                             />
                         </div>
 
