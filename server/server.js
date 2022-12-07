@@ -3,9 +3,12 @@ import { graphqlHTTP } from "express-graphql";
 import "./dbConnection.js";
 import cors from 'cors';
 import schema from "./schema/schema.js";
+// import dotenv from "dotenv";
 
 const app = express();
 
+// const port = process.env.PORT;
+// console.log(port);
 
 app.use(cors());
 

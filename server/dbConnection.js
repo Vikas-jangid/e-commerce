@@ -5,6 +5,7 @@ mongoose.connect("mongodb://localhost:27017/e-commerce", {
     useUnifiedTopology: true,
 });
 
+
 mongoose.connection.on('connected', () => {
     console.log('mongoose connected to db');
   });
