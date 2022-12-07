@@ -8,7 +8,6 @@ import axios from "axios";
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [status, setStatusBase] = useState();
 
     const handleSubmit = () => {
         console.log(email, "email");
@@ -18,20 +17,7 @@ function Login() {
 
         const handleSocialLogin = (token)=>{
             console.log(token,"google acc info")
-            axios.post("http://localhost:9002/social-login", {
-                    token:token
-                  })
-                  .then((res)=>{
-                    localStorage.setItem("user", JSON.stringify(res.data.jti));
-                    console.log(res.data)
-                    navigate("/home");
-                    window.location.reload();
-                    return res.data;
-                  })
-                  .catch(error => {
-                    setStatusBase({ msg: "Login Failed", key: Math.random() });
-                  })
-            }
+        }
 
     return (
         <>
