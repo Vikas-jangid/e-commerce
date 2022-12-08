@@ -25,7 +25,7 @@ function About() {
          </div>
          
          <div className="container mx-auto grid grid-cols-4 gap-4">
-            <div className="mx-auto my-4">
+            <div className="mx-auto ">
                 <img src={Feature1} className="object-scale-down h-20 w-56 animate-pulse" alt="feature-1" />
                 <p className="font-bold text-lg m-2 text-center leading-loose">Amazing Value Every Day</p>
                 <p className="font-thin text-sm m-2 text-center leading-loose">Items prices that fit your budget.</p>
