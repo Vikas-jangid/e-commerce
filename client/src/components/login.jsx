@@ -1,19 +1,22 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useState} from "react";
 import loginImage from "../assests/images/login.webp";
-import googleIcon from "../assests/images/google-icon.svg";
-
+import GoogleLogin from "react-google-login";
+import { useNavigate as navigate } from "react-router-dom";
 
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
 
     const handleSubmit = () => {
         console.log(email, "email");
         console.log(password, "password");
 
     }
+
+        const handleSocialLogin = (token)=>{
+            console.log(token,"google acc info")
+        }
 
     return (
         <>
@@ -26,21 +29,26 @@ function Login() {
                         className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
                     >
                         <img
-                        src={loginImage}
-                        className="w-full"
-                        alt="Sample image"
+                            src={loginImage}
+                            className="w-full"
+                            alt="Sample image"
                         />
                     </div>
                     <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
                         <form>
                         <div className="flex flex-row items-center justify-center lg:justify-start">
                             <p className="text-lg mb-0 mr-4">LOGIN</p>
-                            <button
-                            type="button"
-                            className="inline-block p-3 mx-3 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md"
-                            >
-                              <img src={googleIcon}  alt="googleIcon" viewBox="0 0 320 512" className="w-4 h-4"/>
-                            </button>
+                            <GoogleLogin
+                                clientId="36374029359-vgceut39avc3v16p44cnn9tsri92oh5p.apps.googleusercontent.com"
+                                buttonText={('login')}
+                                onSuccess={(res)=>{console.log(res);
+                                    handleSocialLogin(res.tokenId)
+                                    navigate("/home")
+                                }}
+                                onFailure={(res)=>console.log(res,"res")}
+                                cookiePolicy={'single_host_origin'}
+                                isSignedIn={true}
+                            />
                         </div>
 
                         <div
