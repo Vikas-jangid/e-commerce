@@ -2,21 +2,26 @@
 import React, {useState} from "react";
 import loginImage from "../assests/images/login.webp";
 import googleIcon from "../assests/images/google-icon.svg";
+import { useDispatch } from "react-redux";
+import { signupAction } from "../redux/actions/signupAction";
 
 
 function Signup() {
-    const [first_name, setFirstName] = useState();
-    const [last_name, setLastName] = useState();
-    const [user_name, setUserName] = useState();
-    const [mobile_number, setMobileNumber] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [confirm_password, setConfirmPassword] = useState();
+    const [userInfo, setUserInfo] = useState({
+        first_name: "",
+        last_name:"",
+        user_name:"",
+        mobile_number:"",
+        email:"",
+        password:"",
+        confirm_password:""
+    });
 
+    const Dispatch = useDispatch();
 
     const handleSubmit = () => {
-        console.log(first_name, last_name, user_name, mobile_number, email, password, confirm_password, "user data");
-
+        console.log(userInfo, "user data");
+        Dispatch(signupAction(userInfo));
     }
 
     return (
@@ -62,7 +67,9 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="first_name"
                             placeholder="First Name"
-                            onChange={e => setFirstName(e.target.value)}
+                            onChange={e => 
+                                setUserInfo({ ...userInfo, ...{ first_name: e.target.value }})
+                            }
                             />
                         </div>
                         <div className="mb-6">
@@ -72,7 +79,9 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="last_name"
                             placeholder="Last Name"
-                            onChange={e => setLastName(e.target.value)}
+                            onChange={e => 
+                                setUserInfo({ ...userInfo, ...{ last_name: e.target.value }})
+                            }
                             />
                         </div>
                         <div className="mb-6">
@@ -82,7 +91,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="email"
                             placeholder="Email address"
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={e => setUserInfo({ ...userInfo, ...{ email: e.target.value }})}
                             />
                         </div>
                         <div className="mb-6">
@@ -92,7 +101,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="user_name"
                             placeholder="User Name"
-                            onChange={e => setUserName(e.target.value)}
+                            onChange={e => setUserInfo({ ...userInfo, ...{ user_name: e.target.value }})}
                             />
                         </div>
                         <div className="mb-6">
@@ -102,7 +111,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="mobile_number"
                             placeholder="Mobile Number"
-                            onChange={e => setMobileNumber(e.target.value)}
+                            onChange={e => setUserInfo({ ...userInfo, ...{ mobile_number: e.target.value }})}
                             />
                         </div>
                         <div className="mb-6">
@@ -112,7 +121,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="password"
                             placeholder="Password"
-                            onChange={e => setPassword(e.target.value)}
+                            onChange={e => setUserInfo({ ...userInfo, ...{ password: e.target.value }})}
                             />
                         </div>
                         <div className="mb-6">
@@ -122,7 +131,7 @@ function Signup() {
                             className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="confirm_password"
                             placeholder="Confirm Password"
-                            onChange={e => setConfirmPassword(e.target.value)}
+                            onChange={e => setUserInfo({ ...userInfo, ...{ confirm_password: e.target.value }})}
                             />
                         </div>
 

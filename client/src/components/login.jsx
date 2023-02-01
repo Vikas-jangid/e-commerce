@@ -2,22 +2,27 @@
 import React, {useState} from "react";
 import loginImage from "../assests/images/login.webp";
 import googleIcon from "../assests/images/google-icon.svg";
+import { loginAction } from "../redux/actions/loginAction";
+import { useDispatch } from "react-redux";
 
 
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
-
+    
+    const dispatch = useDispatch();
+    
     const handleSubmit = () => {
-        console.log(email, "email");
-        console.log(password, "password");
-
+        const loginData = {
+            email,
+            password
+        }
+        dispatch(loginAction(loginData));
     }
 
     return (
         <>
-            <section className="h-screen">
+            <section>
                 <div className="px-6 h-full text-gray-800">
                     <div
                     className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
